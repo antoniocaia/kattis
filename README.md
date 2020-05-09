@@ -1,1 +1,1 @@
-# Kattis solutions
+# Kattis Java solutions
