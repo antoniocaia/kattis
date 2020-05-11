@@ -8,9 +8,4 @@ public class Link {
 		this.node = node;
 		this.distance = distance;
 	}
-	
-	@Override
-	public String toString() {
-		return node + " " + distance;
-	}
 }
