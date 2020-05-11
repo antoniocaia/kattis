@@ -6,17 +6,20 @@ import java.util.List;
 public class Node {
 
 	private LinkedList<Link> links;
+	// private Map<Integer, Integer> links;
 	private int items;
 
 	public Node(int items) {
 		links = new LinkedList<Link>();
+		// links = new HashMap<Integer, Integer>();
 		this.items = items;
 	}
 
 	public void addNewLink(int node, int dist) {
 		links.add(new Link(node, dist));
+		// links.put(node, dist);
 	}
-	
+
 	public int getItems() {
 		return items;
 	}
@@ -25,8 +28,8 @@ public class Node {
 			int itemsCollected) {
 		int minPath = Integer.MAX_VALUE;
 		int maxItem = -1;
-		LinkedList<Integer> myPath = new LinkedList<Integer>(pathList);
-		
+
+		// for (Map.Entry<Integer, Integer> link : map.entrySet()) {
 		for (Link link : links) {
 			int myDist = totalDistance + link.distance;
 			int myItems = itemsCollected + nodeList.get(link.node).getItems();
@@ -37,9 +40,9 @@ public class Node {
 					maxItem = myItems;
 				}
 			} else if (!pathList.contains(link.node) && myDist < minPath) {
-				myPath.add(link.node);
-				int[] update = nodeList.get(link.node).shortestPath(nodeList, myPath, myDist, myItems);
-				myPath.remove(myPath.size() - 1);
+				pathList.add(link.node);
+				int[] update = nodeList.get(link.node).shortestPath(nodeList, pathList, myDist, myItems);
+				pathList.remove(pathList.size() - 1);
 				if (update[0] < minPath || (update[0] == minPath && update[1] > maxItem)) {
 					minPath = update[0];
 					maxItem = update[1];
