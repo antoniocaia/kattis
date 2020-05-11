@@ -30,8 +30,8 @@ public class BigTruck {
 		
 		LinkedList<Integer> pathList = new LinkedList<>();
 		pathList.add(0);
-		int shortest = nodeList.get(0).shortestPath(nodeList, pathList, 0);
-		System.out.println("Shortest " + shortest);
+		int[] shortest = nodeList.get(0).shortestPath(nodeList, pathList, 0, nodeList.get(0).getItems());
+		System.out.println(shortest[0] + " " + shortest[1]);
 	}
 
 }

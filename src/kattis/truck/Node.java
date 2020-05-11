@@ -25,26 +25,35 @@ public class Node {
 		return items;
 	}
 
-	public int shortestPath(List<Node> nodeList, LinkedList<Integer> pathList, int totalDistance) {
-		//System.out.println("----\nPath: " + pathList);
+	public int[] shortestPath(List<Node> nodeList, LinkedList<Integer> pathList, int totalDistance,
+			int itemsCollected) {
+		// System.out.println("----\nPath: " + pathList);
 		int minPath = Integer.MAX_VALUE;
+		int maxItem = -1;
 
 		for (Link link : links) {
-			//System.out.println("Node: " + (link.node+1) + " Dist: " + link.distance);
+			// System.out.println("Node: " + (link.node+1) + " Dist: " + link.distance);
 			LinkedList<Integer> myPath = new LinkedList<Integer>(pathList);
-			int pathDist = totalDistance;
+			int myDist = totalDistance;
+			int myItems = itemsCollected;
 			if (link.node == nodeList.size() - 1) {
-				//System.out.println(pathDist + link.distance + " nice");
-				return pathDist += link.distance;
+				// System.out.println(pathDist + link.distance + " nice");
+				myDist += link.distance;
+				myItems += nodeList.get(link.node).getItems();
+				return new int[] { myDist, myItems };
 			} else if (!pathList.contains(link.node)) {
-				pathDist += link.distance;
+				myDist += link.distance;
+				myItems += nodeList.get(link.node).getItems();
 				myPath.add(link.node);
-				int dist = nodeList.get(link.node).shortestPath(nodeList, myPath, pathDist);
-				minPath = (dist < minPath) ? dist : minPath;
+				int[] update = nodeList.get(link.node).shortestPath(nodeList, myPath, myDist, myItems);
+				if (update[0] < minPath || (update[0] == minPath && update[1] > maxItem)) {
+					minPath = update[0];
+					maxItem = update[1];
+				}
 			}
 		}
 
-		return minPath;
+		return new int[] { minPath, maxItem };
 	}
 
 }
