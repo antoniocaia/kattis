@@ -11,7 +11,6 @@ public class BigTruck {
 
 	public static void main(String[] args) {
 
-		//int nodeQt = Integer.parseInt(scanner.nextLine()); 
 		scanner.nextLine();
 		List<Node> nodeList = Arrays.stream(scanner.nextLine().split(" ")).map(x -> new Node(Integer.parseInt(x)))
 				.collect(Collectors.toList());
