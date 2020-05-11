@@ -25,7 +25,7 @@ public class BigTruck {
 			nodeList.get(input.get(0) - 1).addNewLink(input.get(1) - 1, input.get(2));
 			nodeList.get(input.get(1) - 1).addNewLink(input.get(0) - 1, input.get(2));
 		}
-
+		
 		LinkedList<Integer> pathList = new LinkedList<>();
 		pathList.add(0);
 		int[] shortest = nodeList.get(0).shortestPath(nodeList, pathList, 0, nodeList.get(0).getItems());
