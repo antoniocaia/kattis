@@ -1,4 +1,4 @@
-package kattis.truck;
+package kattis.truck.rec;
 
 public class Link {
 	public int node;

@@ -1,4 +1,4 @@
-package kattis.truck;
+package kattis.truck.rec;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,18 +6,15 @@ import java.util.List;
 public class Node {
 
 	private LinkedList<Link> links;
-	// private Map<Integer, Integer> links;
 	private int items;
 
 	public Node(int items) {
 		links = new LinkedList<Link>();
-		// links = new HashMap<Integer, Integer>();
 		this.items = items;
 	}
 
 	public void addNewLink(int node, int dist) {
 		links.add(new Link(node, dist));
-		// links.put(node, dist);
 	}
 
 	public int getItems() {
@@ -29,7 +26,6 @@ public class Node {
 		int minPath = Integer.MAX_VALUE;
 		int maxItem = -1;
 
-		// for (Map.Entry<Integer, Integer> link : map.entrySet()) {
 		for (Link link : links) {
 			int myDist = totalDistance + link.distance;
 			int myItems = itemsCollected + nodeList.get(link.node).getItems();
@@ -49,6 +45,7 @@ public class Node {
 				}
 			}
 		}
+		
 		return new int[] { minPath, maxItem };
 	}
 }
