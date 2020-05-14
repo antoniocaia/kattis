@@ -1,4 +1,4 @@
-package kattis.truck.dijkstra;
+package kattis.truck;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ public class Node {
 	private HashMap<Integer, Integer> links;
 	private int items;
 	
-	// Alghoritm realted
+	// Algorithm related
 	private int maxItems;
 	private int minDistance;
 

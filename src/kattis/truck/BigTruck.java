@@ -1,12 +1,10 @@
-package kattis.truck.dijkstra;
+package kattis.truck;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BigTruck {
@@ -14,9 +12,10 @@ public class BigTruck {
 
 	public static void main(String[] args) {
 		// Node list init
-		int nodeNumber = Integer.parseInt(scanner.nextLine());
+		scanner.nextLine(); //Number of nodes not needed
 		List<Node> nodeList = Arrays.stream(scanner.nextLine().split(" "))
-				.map(x -> new Node(Integer.parseInt(x), Integer.MAX_VALUE, -1)).collect(Collectors.toList());
+				.map(x -> new Node(Integer.parseInt(x), Integer.MAX_VALUE, -1))
+					.collect(Collectors.toList());
 
 		Node starter = nodeList.get(0);
 		starter.setDistance(0);
@@ -25,8 +24,9 @@ public class BigTruck {
 		// Link init
 		int linkQt = Integer.parseInt(scanner.nextLine());
 		for (int i = 0; i < linkQt; i++) {
-			List<Integer> input = Arrays.stream(scanner.nextLine().split(" ")).map(x -> Integer.parseInt(x))
-					.collect(Collectors.toList());
+			List<Integer> input = Arrays.stream(scanner.nextLine().split(" "))
+					.map(x -> Integer.parseInt(x))
+						.collect(Collectors.toList());
 
 			nodeList.get(input.get(0) - 1).addNewLink(input.get(1) - 1, input.get(2));
 			nodeList.get(input.get(1) - 1).addNewLink(input.get(0) - 1, input.get(2));
@@ -40,11 +40,9 @@ public class BigTruck {
 		}
 	}
 
-	
-	
 	public static Node dijkstra(int start, List<Node> nodeList) {
 		HashSet<Integer> settled = new HashSet<>();
-	    HashSet<Integer> unsettled= new HashSet<>();
+		HashSet<Integer> unsettled = new HashSet<>();
 		unsettled.add(start);
 
 		while (unsettled.size() != 0) {
