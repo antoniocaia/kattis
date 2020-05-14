@@ -1,9 +1,12 @@
 package kattis.truck.dijkstra;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BigTruck {
@@ -37,19 +40,22 @@ public class BigTruck {
 		}
 	}
 
+	
+	
 	public static Node dijkstra(int start, List<Node> nodeList) {
-		LinkedList<Integer> settled = new LinkedList<>();
-		LinkedList<Integer> unsettled = new LinkedList<>();
+		HashSet<Integer> settled = new HashSet<>();
+	    HashSet<Integer> unsettled= new HashSet<>();
 		unsettled.add(start);
 
 		while (unsettled.size() != 0) {
 			int currentNode = getNearestNode(unsettled, nodeList);
 			unsettled.remove(Integer.valueOf(currentNode));
-			LinkedList<Link> adjNodes = nodeList.get(currentNode).getLinks();
-			for (Link link : adjNodes) {
-				if (!settled.contains(link.node)) {
-					minimumDistance(nodeList.get(currentNode), nodeList.get(link.node), link.distance);
-					unsettled.add(link.node);
+			for (HashMap.Entry<Integer, Integer> link : nodeList.get(currentNode).getLinks().entrySet()) {
+				int node = link.getKey();
+				int distance = link.getValue();
+				if (!settled.contains(node)) {
+					minimumDistance(nodeList.get(currentNode), nodeList.get(node), distance);
+					unsettled.add(node);
 				}
 			}
 			settled.add(currentNode);
@@ -57,7 +63,7 @@ public class BigTruck {
 		return nodeList.get(nodeList.size() - 1);
 	}
 
-	private static int getNearestNode(LinkedList<Integer> unsettled, List<Node> nodeList) {
+	private static int getNearestNode(HashSet<Integer> unsettled, List<Node> nodeList) {
 		int minDist = Integer.MAX_VALUE;
 		int nextNode = -1;
 
