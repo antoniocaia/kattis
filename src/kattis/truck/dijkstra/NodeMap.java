@@ -3,17 +3,17 @@ package kattis.truck.dijkstra;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Node {
+public class NodeMap {
 	
 	// Attributes
-	private HashMap<Integer, Integer> links;
+	private Map<Integer, Integer> links;
 	private int items;
 	
 	// Alghoritm realted
 	private int maxItems;
 	private int minDistance;
 
-	public Node(int items, int dist, int prec) {
+	public NodeMap(int items, int dist, int prec) {
 		links = new HashMap<Integer, Integer>();
 		this.items = items;
 		this.setDistance(dist);
