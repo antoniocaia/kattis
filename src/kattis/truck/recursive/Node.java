@@ -1,4 +1,4 @@
-package kattis.truck.recursion;
+package kattis.truck.recursive;
 
 import java.util.HashMap;
 import java.util.HashSet;
