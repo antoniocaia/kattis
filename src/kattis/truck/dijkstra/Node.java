@@ -1,4 +1,4 @@
-package kattis.truck;
+package kattis.truck.dijkstra;
 
 import java.util.HashMap;
 import java.util.Map;
