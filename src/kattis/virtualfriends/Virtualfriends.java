@@ -28,14 +28,33 @@ public class Virtualfriends {
 				}
 				tmp0.add(pair[1]);
 				tmp1.add(pair[0]);
-				
-				HashSet<String> alreadyChecked = new HashSet<String>();
-				getFriendCount(pair[0], alreadyChecked, friends);
-				System.out.println(alreadyChecked.size());
+
+				int cc = getFriendCount(pair[0], friends);
+				System.out.println(cc);
 			}
 		}
 	}
 
+	static int getFriendCount(String id, HashMap<String, HashSet<String>> friends) {
+		HashSet<String> alreadychecked = new HashSet<String>();
+		HashSet<String> unchecked = new HashSet<String>();
+		unchecked.add(id);
+		while (unchecked.size() > 0) {
+			String s = unchecked.iterator().next();
+			HashSet<String> list = friends.get(s);
+			for (String str : list) {
+				if (!alreadychecked.contains(str))
+					unchecked.add(str);
+			}
+
+			unchecked.remove(s);
+			alreadychecked.add(s);
+		}
+
+		return alreadychecked.size();
+	}
+
+	// Not used
 	static void getFriendCount(String id, HashSet<String> alreadyChecked, HashMap<String, HashSet<String>> friends) {
 		HashSet<String> list = friends.get(id);
 		alreadyChecked.add(id);
