@@ -7,9 +7,8 @@ public class Virtualfriendsfastest {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		long startTime = System.nanoTime();
-
 		int in = Integer.parseInt(scanner.nextLine());
+		long startTime = System.nanoTime();
 		for (int i = 0; i < in; i++) {
 			int num = Integer.parseInt(scanner.nextLine());
 			HashSet<HashSet<String>> friendsCircle = new HashSet<>();
@@ -20,9 +19,9 @@ public class Virtualfriendsfastest {
 				HashSet<String> fc0 = null;
 				HashSet<String> fc1 = null;
 				for (HashSet<String> l : friendsCircle) {
-					if (l.contains(pair[0])) {
+					if (fc0 == null && l.contains(pair[0])) {
 						fc0 = l;
-					} else if (l.contains(pair[1])) {
+					} else if (fc1 == null && l.contains(pair[1])) {
 						fc1 = l;
 					}
 					if (fc0 != null && fc1 != null)
@@ -49,7 +48,7 @@ public class Virtualfriendsfastest {
 			}
 		}
 		long endTime = System.nanoTime();
-		long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
+		long duration = ((endTime - startTime) / 1000000);  
 		System.out.println(duration);
 	}
 }

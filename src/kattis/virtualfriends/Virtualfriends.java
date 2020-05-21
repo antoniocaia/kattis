@@ -8,7 +8,9 @@ public class Virtualfriends {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		
 		int in = Integer.parseInt(scanner.nextLine());
+		long startTime = System.nanoTime();
 		for (int i = 0; i < in; i++) {
 			int num = Integer.parseInt(scanner.nextLine());
 			HashMap<String, HashSet<String>> friends = new HashMap<>();
@@ -33,6 +35,10 @@ public class Virtualfriends {
 				System.out.println(cc);
 			}
 		}
+		
+	long endTime = System.nanoTime();
+	long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
+	System.out.println(duration);
 	}
 
 	static int getFriendCount(String id, HashMap<String, HashSet<String>> friends) {
@@ -54,7 +60,7 @@ public class Virtualfriends {
 		return alreadychecked.size();
 	}
 
-	// Not used
+	// Recursive variant, not used
 	static void getFriendCount(String id, HashSet<String> alreadyChecked, HashMap<String, HashSet<String>> friends) {
 		HashSet<String> list = friends.get(id);
 		alreadyChecked.add(id);
