@@ -2,73 +2,53 @@ package kattis.virtualfriends;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Scanner;
+
 
 public class Virtualfriends {
-	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		
-		int in = Integer.parseInt(scanner.nextLine());
-		long startTime = System.nanoTime();
+		Kattio scan = new Kattio(System.in);
+		int in = scan.getInt();
+
 		for (int i = 0; i < in; i++) {
-			int num = Integer.parseInt(scanner.nextLine());
-			HashMap<String, HashSet<String>> friends = new HashMap<>();
+			int num = scan.getInt();
+			HashMap<String, HashSet<String>> listofnames = new HashMap<>();
+			String[] pair = new String[2];
+			HashSet<String> fc0;
+			HashSet<String> fc1;
 			for (int j = 0; j < num; j++) {
-				String[] pair = scanner.nextLine().split(" ");
+				pair[0] = scan.getWord();
+		        pair[1] = scan.getWord();
 
-				HashSet<String> tmp0 = friends.get(pair[0]);
-				if (tmp0 == null) {
-					tmp0 = new HashSet<String>();
-					friends.put(pair[0], tmp0);
+				fc0 = listofnames.get(pair[0]);
+				fc1 = listofnames.get(pair[1]);
+
+				if (fc0 != null && fc1 != null) {
+					if (!fc1.equals(fc0)) { 
+						fc0.addAll(fc1);
+						fc1.addAll(fc0);
+						listofnames.put(pair[1], fc0);
+					}
+					System.out.println(fc0.size());
+				} else if (fc0 == null && fc1 == null) {
+					HashSet<String> start = new HashSet<String>();
+					start.add(pair[0]);
+					start.add(pair[1]);
+					listofnames.put(pair[0], start);
+					listofnames.put(pair[1], start);
+					System.out.println(start.size());
+				} else if (fc0 == null && fc1 != null) {
+					fc1.add(pair[0]);
+					listofnames.put(pair[0], fc1);
+					System.out.println(fc1.size());
+				} else if (fc1 == null && fc0 != null) {
+					fc0.add(pair[1]);
+					listofnames.put(pair[1], fc0);
+					System.out.println(fc0.size());
 				}
-
-				HashSet<String> tmp1 = friends.get(pair[1]);
-				if (tmp1 == null) {
-					tmp1 = new HashSet<String>();
-					friends.put(pair[1], tmp1);
-				}
-				tmp0.add(pair[1]);
-				tmp1.add(pair[0]);
-
-				int cc = getFriendCount(pair[0], friends);
-				System.out.println(cc);
+				System.out.println("LIST: " + listofnames);
 			}
 		}
-		
-	long endTime = System.nanoTime();
-	long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
-	System.out.println(duration);
+		scan.close();
 	}
-
-	static int getFriendCount(String id, HashMap<String, HashSet<String>> friends) {
-		HashSet<String> alreadychecked = new HashSet<String>();
-		HashSet<String> unchecked = new HashSet<String>();
-		unchecked.add(id);
-		while (unchecked.size() > 0) {
-			String s = unchecked.iterator().next();
-			HashSet<String> list = friends.get(s);
-			for (String str : list) {
-				if (!alreadychecked.contains(str))
-					unchecked.add(str);
-			}
-
-			unchecked.remove(s);
-			alreadychecked.add(s);
-		}
-
-		return alreadychecked.size();
-	}
-
-	// Recursive variant, not used
-	static void getFriendCount(String id, HashSet<String> alreadyChecked, HashMap<String, HashSet<String>> friends) {
-		HashSet<String> list = friends.get(id);
-		alreadyChecked.add(id);
-		for (String str : list) {
-			if (!alreadyChecked.contains(str)) {
-				getFriendCount(str, alreadyChecked, friends);
-			}
-		}
-	}
-
 }
