@@ -3,7 +3,6 @@ package kattis.virtualfriends;
 import java.util.HashMap;
 import java.util.HashSet;
 
-
 public class Virtualfriends {
 
 	public static void main(String[] args) {
