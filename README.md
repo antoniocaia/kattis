@@ -15,5 +15,5 @@ Problem ID | Solution
 [stuckinatimeloop](https://open.kattis.com/problems/stuckinatimeloop) | [StuckInATimeLoop.java](src/kattis/StuckInATimeLoop.java)
 [timebomb](https://open.kattis.com/problems/timebomb) | [TimeBomb.java](src/kattis/TimeBomb.java)
 [whatdoesthefoxsay](https://open.kattis.com/problems/whatdoesthefoxsay) | [Whatdoesthefoxsay.java](src/kattis/Whatdoesthefoxsay.java)
-[woodcutting](https://open.kattis.com/problems/woodcutting) | [Whatdoesthefoxsay.java](src/kattis/Woodcutting.java)
+[woodcutting](https://open.kattis.com/problems/woodcutting) | [Woodcutting.java](src/kattis/Woodcutting.java)
 
