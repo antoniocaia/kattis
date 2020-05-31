@@ -2,8 +2,8 @@
 
 Problem ID | Solution
 --- | ---
-[airconditioned](https://open.kattis.com/problems/airconditioned) | [Airconditioned.java](src/kattis/Airconditioned.java)  
-[anagramcounting](https://open.kattis.com/problems/anagramcounting) | [AngramCounting.java](src/kattis/anagramcounting.java) 
+[airconditioned](https://open.kattis.com/problems/airconditioned) | [Airconditioned.java](src/kattis/airconditioned/Airconditioned.java)  
+[anagramcounting](https://open.kattis.com/problems/anagramcounting) | [AngramCounting.java](src/kattis/AngramCounting.java) 
 [bigtruck](https://open.kattis.com/problems/bigtruck) | [BigTruck.java](src/kattis/truck/dijkstra/BigTruck.java)  
 [chanukah](https://open.kattis.com/problems/4thought) | [ChanukahChallenge.java](src/kattis/ChanukahChallenge.java)  
 [patuljci](https://open.kattis.com/problems/patuljci) | [Patuljci.java](src/kattis/Patuljci.java)  
