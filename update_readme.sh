@@ -18,8 +18,6 @@ paste ids gitlinks javas | while IFS="$(printf '\t')" read -r id link java; do
 	echo "[$id](https://open.kattis.com/problems/$id) | [$java](https://github.com$link) | $dif" >>README.md
 done
 
-echo 'To use update_readme.sh, you need to have "Solved < problem id >" as the title of your last commit.' >>README.md
-
 rm source.html
 rm gitlinks
 rm javas

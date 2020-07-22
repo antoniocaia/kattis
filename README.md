@@ -1,7 +1,4 @@
 # Kattis Problems Java Solutions
-
-To use update_readme.sh, you need to have "Solved < problem id >" as the title of your last commit.
-
 Problem ID | Solution | Difficulty
 --- | --- |:-:
 [airconditioned](https://open.kattis.com/problems/airconditioned) | [airconditioned](https://github.com/antoniocaia/kattis/tree/master/src/kattis/airconditioned) | 3.9
