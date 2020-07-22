@@ -1,4 +1,7 @@
 # Kattis Problems Java Solutions
+
+To use update_readme.sh, you need to have "Solved < problem id >" as the title of your last commit.
+
 Problem ID | Solution | Difficulty
 --- | --- |:-:
 [airconditioned](https://open.kattis.com/problems/airconditioned) | [airconditioned](https://github.com/antoniocaia/kattis/tree/master/src/kattis/airconditioned) | 3.9
@@ -16,4 +19,3 @@ Problem ID | Solution | Difficulty
 [timebomb](https://open.kattis.com/problems/timebomb) | [TimeBomb.java](https://github.com/antoniocaia/kattis/blob/master/src/kattis/TimeBomb.java) | 1.8
 [whatdoesthefoxsay](https://open.kattis.com/problems/whatdoesthefoxsay) | [Whatdoesthefoxsay.java](https://github.com/antoniocaia/kattis/blob/master/src/kattis/Whatdoesthefoxsay.java) | 2.0
 [woodcutting](https://open.kattis.com/problems/woodcutting) | [WoodCutting.java](https://github.com/antoniocaia/kattis/blob/master/src/kattis/WoodCutting.java) | 3.1
-To use update_readme.sh, you need to have "Solved < problem id >" as the title of your last commit.
